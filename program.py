@@ -55,25 +55,19 @@ def put_cards_on_queue(player_cards: [Card]) -> Queue:
     return queue_cards
 
 
-def get_deal(player_card: Queue) -> [Card]:
-    deal = []
-    for i in range(0, 5):
-        deal.append(player_card.dequeue())
-
-    return deal
-
-
 def game_loop():
     user_cards = put_cards_on_queue(cards[0:10])
     bot_cards = put_cards_on_queue(cards[10:])
 
-    user_deal = get_deal(user_cards)
-    bot_deal = get_deal(bot_cards)
-
-    user = Player("Mário", user_deal, user_cards)
+    user = Player("Mário", user_cards)
     user.print_deal()
     print()
     user.print_cards()
+    print("=========")
+    bot = Player("Bot", bot_cards)
+    bot.print_deal()
+    print()
+    bot.print_cards()
 
 
 if __name__ == "__main__":
